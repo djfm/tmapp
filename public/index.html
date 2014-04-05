@@ -8,110 +8,6 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <script type="text/x-handlebars">
-    <header>
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <a class="navbar-brand" href="#">YO</a>
-        <ul class="nav navbar-nav">
-          {{#link-to "index" tagName="li" href=false}}<a href {{bind-attr href="view.href"}}>TMApp</a>{{/link-to}}
-          {{#link-to "projects" tagName="li" href=false}}<a href {{bind-attr href="view.href"}}>Projects</a>{{/link-to}}
-        </ul>
-      </nav>
-    </header>
-
-    <div id='content' class='container'>
-      {{outlet}}
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="index">
-    Welcome Home!
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="projects/index">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">Translation Projects</h1>
-      </div>
-      <div class="panel-body">
-        <p>This is where you define translation projects.<br>A translation project is a coherent set of translations, with a deadline.<br>A project is composed of one or several resources, that you will be able to add once you have created the project.</p>
-        <p>Projects are sent to translators once they're approved. Once approved, a project may no longer be changed. This is by design, you need to know what you want.</p>
-        {{#link-to 'projects.new' classNames='btn btn-primary'}}Add New Project{{/link-to}}
-      </div>
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="projects/new">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1 class="panel-title">Add New Project</h1>
-      </div>
-      <div class="panel-body">
-        {{#form-for model}}
-          {{input reference}}
-          <div class="form-group">
-            <label for="deadline" class="col-lg-3 control-label">Deadline</label>
-            <div class="col-lg-9">
-              <div class="row">
-                <div class="col-lg-4">{{input id="deadline" type="date" class="form-control" value=model.deadline}}</div>
-                <div class="col-lg-4">
-                  <label class='radio-inline' for='midday'><input name='time_of_day' id='midday' value='midday' type="radio">Midday</label>
-                  <label class='radio-inline' for='evening'><input name='time_of_day' id='evening' value='evening' type="radio">Evening</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="preferred_priority" class="col-lg-3 control-label">Priority</label>
-            <div class="col-lg-9">
-              <div class="radio">
-                <label for="low_priority">{{input id="low_priority" name="priority" value="low" type="radio" checkedBinding='model.priority'}}Low</label>
-                <p class="help-block">If we miss the deadline by no more than a week it's still OK.</p>
-              </div>
-              <div class="radio">
-                <label for="normal_priority"><input name="priority" id="normal_priority" value="normal" type="radio">Normal</label>
-                <p class="help-block">If we miss the deadline by no more than a day or two it's still OK.</p>
-              </div>
-              <div class="radio">
-                <label for="preferred_priority"><input checked name="priority" id="preferred_priority" value="preferred" type="radio">Preferred</label>
-                <p class="help-block">If we miss the deadline by no more than a day or two it's still OK.</p>
-              </div>
-              <div class="radio">
-                <label for="high_priority"><input name="priority" id="high_priority" value="high" type="radio">High</label>
-                <p class="help-block">Someone will die if this project is not completed in time.</p>
-              </div>
-            </div>
-          </div>
-          {{input comments as="text"}}
-          <div class="form-group">
-            <div class="col-lg-9 col-lg-offset-3">
-              <button type="submit" class="btn btn-default">
-                Create Project
-              </button>
-            </div>
-          </div>
-        {{/form-for}}
-      </div>
-    </div>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="bootstrap-input">
-      {{label-field propertyBinding="view.property" textBinding="view.label"}}
-      <div class="{{unbound view.wrapperConfig.controlsWrapperClass}}">
-        {{partial "easyForm/inputControls"}}
-      </div>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="easyForm/inputControls">
-      {{input-field propertyBinding="view.property" inputOptionsBinding="view.inputOptionsValues" classNames='form-control'}}
-      {{#if view.showError}}
-        {{error-field propertyBinding="view.property"}}
-      {{/if}}
-      {{#if view.hint}}
-        {{hint-field propertyBinding="view.property" textBinding="view.hint"}}
-      {{/if}}
-  </script>
-
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.0.js"></script>
@@ -119,6 +15,7 @@
   <script src="js/easyForm-config.js"></script>
   <script src="js/libs/bootstrap.min.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/templates.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
 </body>

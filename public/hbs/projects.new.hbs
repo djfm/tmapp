@@ -1,0 +1,51 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title">Add New Project</h1>
+  </div>
+  <div class="panel-body">
+    {{#form-for model}}
+      {{input reference}}
+      <div class="form-group">
+        <label for="deadline" class="col-lg-3 control-label">Deadline</label>
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-4">{{input id="deadline" type="date" class="form-control" value=model.deadline}}</div>
+            <div class="col-lg-4">
+              <label class='radio-inline' for='midday'><input name='time_of_day' id='midday' value='midday' type="radio">Midday</label>
+              <label class='radio-inline' for='evening'><input name='time_of_day' id='evening' value='evening' type="radio">Evening</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="preferred_priority" class="col-lg-3 control-label">Priority</label>
+        <div class="col-lg-9">
+          <div class="radio">
+            <label for="low_priority">{{input id="low_priority" name="priority" value="low" type="radio" checkedBinding='model.priority'}}Low</label>
+            <p class="help-block">If we miss the deadline by no more than a week it's still OK.</p>
+          </div>
+          <div class="radio">
+            <label for="normal_priority"><input name="priority" id="normal_priority" value="normal" type="radio">Normal</label>
+            <p class="help-block">If we miss the deadline by no more than a day or two it's still OK.</p>
+          </div>
+          <div class="radio">
+            <label for="preferred_priority"><input checked name="priority" id="preferred_priority" value="preferred" type="radio">Preferred</label>
+            <p class="help-block">If we miss the deadline by no more than a day or two it's still OK.</p>
+          </div>
+          <div class="radio">
+            <label for="high_priority"><input name="priority" id="high_priority" value="high" type="radio">High</label>
+            <p class="help-block">Someone will die if this project is not completed in time.</p>
+          </div>
+        </div>
+      </div>
+      {{input comments as="text"}}
+      <div class="form-group">
+        <div class="col-lg-9 col-lg-offset-3">
+          <button type="submit" class="btn btn-default">
+            Create Project
+          </button>
+        </div>
+      </div>
+    {{/form-for}}
+  </div>
+</div>
